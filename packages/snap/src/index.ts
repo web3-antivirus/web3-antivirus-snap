@@ -1,4 +1,4 @@
-import { panel, Panel } from "@metamask/snaps-ui";
+import { heading, panel, Panel } from "@metamask/snaps-ui";
 import {
   getErrorPanel, getStandardPanel,
 } from "./panels";
@@ -26,7 +26,7 @@ export const onTransaction = async ({
         content: getStandardPanel(),
       }
     }
-    const panelData = renderLayoutFromSnapResponse(analyze?.items || []);
+    const panelData = renderLayoutFromSnapResponse(analyze.items);
 
     return {
       content: panel(panelData),
