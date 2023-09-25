@@ -1,0 +1,27 @@
+{
+  "version": "0.1.2",
+  "description": "Shield your crypto assets against web3-specific threats with our detailed transaction risk reports and timely security alerts.",
+  "proposedName": "Web3 Antivirus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/web3-antivirus/web3-antivirus-snap"
+  },
+  "source": {
+    "shasum": "JRP6GDQpUl0uTiIHQS4FofX//c6SuF2ZIdZcD8gyNnw=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/icon.svg",
+        "packageName": "@web3-antivirus/web3-antivirus-snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "endowment:transaction-insight": {
+      "allowTransactionOrigin": true
+    },
+    "endowment:network-access": {}
+  },
+  "manifestVersion": "0.1"
+}
