@@ -1,9 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { NotificationType, installSnap } from "@metamask/snaps-jest";
+import { installSnap } from "@metamask/snaps-jest";
 import { expect } from "@jest/globals";
 import { heading, panel } from "@metamask/snaps-ui";
-import { assert } from "@metamask/utils";
 import { getErrorPanel, getStandardPanel } from "../panels";
 import { OkResponseMock } from "./mocks";
 
@@ -21,6 +18,9 @@ describe("onTransaction", () => {
         status: 400,
         body: JSON.stringify({}),
         contentType: "application/json",
+        headers: {
+          "Access-Control-Allow-Headers": "*",
+        },
       },
     });
 
@@ -31,7 +31,7 @@ describe("onTransaction", () => {
     const expected = getErrorPanel();
 
     expect(response).toRender(expected);
-    unmock();
+    await unmock();
   });
 
   it("should show Standard panel on empty response", async () => {
@@ -43,6 +43,9 @@ describe("onTransaction", () => {
         status: 200,
         body: JSON.stringify({}),
         contentType: "application/json",
+        headers: {
+          "Access-Control-Allow-Headers": "*",
+        },
       },
     });
 
@@ -53,7 +56,7 @@ describe("onTransaction", () => {
     const expected = getStandardPanel();
 
     expect(response).toRender(expected);
-    unmock();
+    await unmock();
   });
 
   it("show base response with heading from backend", async () => {
@@ -65,6 +68,9 @@ describe("onTransaction", () => {
         status: 200,
         body: JSON.stringify(OkResponseMock),
         contentType: "application/json",
+        headers: {
+          "Access-Control-Allow-Headers": "*",
+        },
       },
     });
 
@@ -75,6 +81,6 @@ describe("onTransaction", () => {
     const expected = panel([heading("Test data")]);
 
     expect(response).toRender(expected);
-    unmock();
+    await unmock();
   });
 });

@@ -19,10 +19,10 @@ const LAYOUT_COMPONENT_BY_TYPE = {
 export const renderLayoutFromSnapResponse = (
   items: SnapResponseDTOItem[]
 ): Component[] =>
-  items.reduce((acc, { node, data }) => {
+  items.reduce<Component[]>((acc, { node, data }) => {
     const component = LAYOUT_COMPONENT_BY_TYPE[node];
     if (component) {
       return [...acc, data ? component(data) : component()];
     }
     return acc;
-  }, [] as Component[]);
+  }, []);

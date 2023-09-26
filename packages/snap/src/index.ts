@@ -3,16 +3,12 @@ import {
   getErrorPanel, getStandardPanel,
 } from "./panels";
 import { getTransactionAnalyze, renderLayoutFromSnapResponse } from "./w3a";
-import type { Json } from "@metamask/utils";
+import { OnTransactionHandler } from "@metamask/snaps-types";
 
-export const onTransaction = async ({
+export const onTransaction: OnTransactionHandler = async ({
   transaction,
   chainId,
   transactionOrigin,
-}: {
-  transaction: { [key: string]: Json };
-  chainId: string;
-  transactionOrigin?: string;
 }): Promise<{ content: Panel }> => {
   try {
     const analyze = await getTransactionAnalyze(

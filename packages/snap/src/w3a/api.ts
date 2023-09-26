@@ -19,8 +19,9 @@ export const getTransactionAnalyze = async (
     body: JSON.stringify({ transaction, chainId, transactionOrigin })
   });
 
-  if (response.status === 200 ) {
-    return (await response.json()) as SnapResponseDTO;
+  if (response.ok) {
+    const result = (await response.json()) as SnapResponseDTO;
+    return result;
   } 
   return null;
 };
