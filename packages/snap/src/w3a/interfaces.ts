@@ -8,7 +8,7 @@ export enum NODE_TYPE {
 
 export interface SnapResponseDTOItem {
   node: NODE_TYPE;
-  data: string;
+  data?: string;
 }
 
 export interface SnapResponseDTO {

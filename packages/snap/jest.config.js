@@ -4,8 +4,12 @@ module.exports = {
     '^.+\\.(t|j)sx?$': 'ts-jest',
   },
   rootDir: './',
-  collectCoverageFrom: ['<rootDir>/**/*.ts'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
   modulePathIgnorePatterns: [
     '<rootDir>/src/__tests__/mocks.ts',
   ],
+  coverageReporters: ['json', 'lcov', 'text', 'clover', 'cobertura'],
+  resetMocks: true,
+  resetModules: true,
+  restoreMocks: true,
 };

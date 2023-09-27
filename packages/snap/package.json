@@ -1,6 +1,6 @@
 {
   "name": "@web3-antivirus/web3-antivirus-snap",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Shield your crypto assets against web3-specific threats with our detailed transaction risk reports and timely security alerts.",
   "repository": {
     "type": "git",
@@ -31,7 +31,8 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
     "start": "mm-snap watch",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@metamask/snaps-types": "^0.32.2",

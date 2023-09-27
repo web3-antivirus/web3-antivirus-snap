@@ -1,6 +1,6 @@
 {
   "name": "@web3-antivirus/metamask-snap",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "private": true,
   "description": "Shield your crypto assets against web3-specific threats with our detailed transaction risk reports and timely security alerts.",
   "homepage": "https://github.com/web3-antivirus/web3-antivirus-snap",
