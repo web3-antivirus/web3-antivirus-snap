@@ -6,6 +6,8 @@ import {
   spinner,
   text,
 } from "@metamask/snaps-ui";
+import { stubLayout } from "../layouts";
+import { SnapRenderError } from "./errors";
 import { NODE_TYPE, SnapResponseDTOItem } from "./interfaces";
 
 const LAYOUT_COMPONENT_BY_TYPE = {
@@ -16,13 +18,20 @@ const LAYOUT_COMPONENT_BY_TYPE = {
   [NODE_TYPE.TEXT]: text,
 };
 
+
 export const renderLayoutFromSnapResponse = (
   items: SnapResponseDTOItem[]
-): Component[] =>
-  items.reduce<Component[]>((acc, { node, data }) => {
-    const component = LAYOUT_COMPONENT_BY_TYPE[node];
-    if (component) {
-      return [...acc, data ? component(data) : component()];
-    }
-    return acc;
-  }, []);
+): Component[] => {
+  try {
+    const result = items.reduce<Component[]>((acc, { node, data }) => {
+      const component = LAYOUT_COMPONENT_BY_TYPE[node];
+      if (component) {
+        return [...acc, data ? component(data) : component()];
+      }
+      return [...acc, ...stubLayout];
+    }, []);
+    return result;
+  } catch (error) {
+    throw new SnapRenderError("Failed to render layout");
+  }
+};

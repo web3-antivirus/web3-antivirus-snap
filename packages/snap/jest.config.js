@@ -5,9 +5,6 @@ module.exports = {
   },
   rootDir: './',
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
-  modulePathIgnorePatterns: [
-    '<rootDir>/src/__tests__/mocks.ts',
-  ],
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'cobertura'],
   resetMocks: true,
   resetModules: true,

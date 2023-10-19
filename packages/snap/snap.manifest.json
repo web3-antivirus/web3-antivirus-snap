@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Shield your crypto assets against web3-specific threats with our detailed transaction risk reports and timely security alerts.",
   "proposedName": "Web3 Antivirus",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/web3-antivirus/web3-antivirus-snap"
   },
   "source": {
-    "shasum": "oQr4vSehdr181IHP9/s8fhrNwuLXBMLJZO/iHdLzYiw=",
+    "shasum": "//46Lf2S2PUtQB/rodthHFQsvXmEgEWuLhgBeHjimcQ=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

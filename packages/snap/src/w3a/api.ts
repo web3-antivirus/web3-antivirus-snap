@@ -1,6 +1,7 @@
 import { SnapResponseDTO } from './interfaces';
 import type { Json } from '@metamask/utils';
 import { API_URL_TRANSACTION_ANALYZE } from './constants';
+import { SnapApiError } from './errors';
 
 export const getTransactionAnalyze = async (
   transaction: { [key: string]: Json },
@@ -18,10 +19,10 @@ export const getTransactionAnalyze = async (
     },
     body: JSON.stringify({ transaction, chainId, transactionOrigin })
   });
-
+  
   if (response.ok) {
     const result = (await response.json()) as SnapResponseDTO;
     return result;
   } 
-  return null;
+  throw new SnapApiError('Api error has occurred');
 };

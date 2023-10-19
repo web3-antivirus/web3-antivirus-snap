@@ -1,6 +1,6 @@
 {
   "name": "@web3-antivirus/web3-antivirus-snap",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Shield your crypto assets against web3-specific threats with our detailed transaction risk reports and timely security alerts.",
   "repository": {
     "type": "git",

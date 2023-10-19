@@ -1,4 +1,5 @@
 import * as api from "./api";
+import { SnapApiError } from "./";
 import { NODE_TYPE } from "./interfaces";
 
 const mockTransaction = {
@@ -7,29 +8,29 @@ const mockTransaction = {
 };
 
 describe("API Request", () => {
-  it("should return 'null' on failed fetch", async () => {
+  it("should throw error on failed fetch", async () => {
     jest
       .spyOn(global, "fetch")
       .mockResolvedValueOnce({ status: 400, ok: false } as Response);
 
-    const result = await api.getTransactionAnalyze(
-      mockTransaction.transaction,
-      mockTransaction.chainId
-    );
+    const apiCall = async () => {
+      await api.getTransactionAnalyze(
+        mockTransaction.transaction,
+        mockTransaction.chainId
+      );
+    };
 
-    expect(result).toEqual(null);
+    expect(apiCall).rejects.toThrow();
   });
 
   it("should return data on success fetch", async () => {
     const panelsItems = [{ node: NODE_TYPE.HEADING, data: "Test data" }];
 
-    jest
-      .spyOn(global, "fetch")
-      .mockResolvedValueOnce({
-        status: 200,
-        ok: true,
-        json: () => Promise.resolve(panelsItems),
-      } as Response);
+    jest.spyOn(global, "fetch").mockResolvedValueOnce({
+      status: 200,
+      ok: true,
+      json: () => Promise.resolve(panelsItems),
+    } as Response);
 
     const result = await api.getTransactionAnalyze(
       mockTransaction.transaction,
